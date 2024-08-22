@@ -7,6 +7,6 @@ import UnoCss from "unocss/vite";
 export default defineConfig({
   plugins: [react(), basicSsl(), UnoCss()],
   build: {
-    outDir: "./dist",
+    outDir: "./docs",
   },
 });
