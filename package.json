@@ -10,11 +10,16 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@ton-community/assets-sdk": "^0.0.4",
+    "@ton/core": "^0.57.0",
+    "@ton/crypto": "^3.3.0",
+    "@ton/ton": "^15.0.0",
     "@tonconnect/ui-react": "^2.0.9",
     "@twa-dev/sdk": "^7.8.0",
     "@vitejs/plugin-basic-ssl": "^1.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "tonweb": "^0.0.66",
     "unocss": "^0.62.2"
   },
   "devDependencies": {
