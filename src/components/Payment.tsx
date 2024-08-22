@@ -5,7 +5,7 @@ import {
   useTonAddress,
   useTonConnectUI,
 } from "@tonconnect/ui-react";
-import { transactionComment } from "../utils/generatorTxComment";
+import { boc2hash, string2bocBase64 } from "../utils";
 
 export default function Payment() {
   const [tonConnectUI] = useTonConnectUI();
@@ -28,7 +28,7 @@ export default function Payment() {
         // 以 nanoTON 形式发送的金额。例如，0.005 TON 等于 5000000 nanoTON
         amount: toNano("0.005").toString(),
         // （可选）boc base64 格式的有效负载.
-        payload: transactionComment("Hello,TON!"),
+        payload: string2bocBase64("Hello,TON!"),
       },
     ],
   };
@@ -39,7 +39,8 @@ export default function Payment() {
       validUntil: tx.validUntil,
       messages: [tx.messages[0]],
     });
-    console.log("simple tx receipt", receipt);
+    console.log("simple tx receipt", boc2hash(receipt.boc));
+    // boc to
   };
   const sendTransaction = async () => {
     if (!userFriendlyAddress) return console.error("not connected");
@@ -47,10 +48,16 @@ export default function Payment() {
       validUntil: tx.validUntil,
       messages: [tx.messages[1]],
     });
-    console.log("tx receipt", receipt);
+    console.log("tx receipt", boc2hash(receipt.boc));
+  };
+
+  const sendAllTransaction = async () => {
+    if (!userFriendlyAddress) return console.error("not connected");
+    const receipt = await tonConnectUI.sendTransaction(tx);
+    console.log("all tx receipt", boc2hash(receipt.boc));
   };
   return (
-    <div className="flex gap-4">
+    <div className="flex flex-col gap-4">
       <button
         className="p-4 bg-[#0098EA] rounded-3xl text-white border-none cursor-pointer"
         onClick={sendSimpleTransaction}
@@ -62,6 +69,12 @@ export default function Payment() {
         className="p-4 bg-[#0098EA] rounded-3xl text-white border-none cursor-pointer"
       >
         Send have payload fields transaction
+      </button>
+      <button
+        onClick={sendAllTransaction}
+        className="p-4 bg-[#0098EA] rounded-3xl text-white border-none cursor-pointer"
+      >
+        Send all transaction
       </button>
     </div>
   );

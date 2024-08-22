@@ -1,5 +1,4 @@
 import { TonConnectButton } from "@tonconnect/ui-react";
-// import { ModalControl } from "../components/ModalControl";
 
 export const Header = () => {
   return (
@@ -9,7 +8,6 @@ export const Header = () => {
     >
       <TonConnectButton />
       <span>My App with React UI</span>
-      {/* <ModalControl /> */}
     </header>
   );
 };
