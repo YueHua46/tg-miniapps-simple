@@ -13,7 +13,7 @@ function App() {
         width: "100vw",
       }}
     >
-      <TonConnectUIProvider manifestUrl="https://192.168.170.254:5173/docs/tonconnect-manifest.json">
+      <TonConnectUIProvider manifestUrl="https://github.com/user-attachments/files/16706686/tonconnect-manifest.json">
         <Header />
         <Main />
         <Footer />
