@@ -17,10 +17,17 @@
     "@tonconnect/ui-react": "^2.0.9",
     "@twa-dev/sdk": "^7.8.0",
     "@vitejs/plugin-basic-ssl": "^1.1.0",
+    "boxen": "^8.0.1",
+    "buffer": "^6.0.3",
+    "eruda": "^3.2.3",
+    "msw": "^2.3.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "ton-core": "^0.53.0",
+    "ton-crypto": "^3.2.0",
     "tonweb": "^0.0.66",
-    "unocss": "^0.62.2"
+    "unocss": "^0.62.2",
+    "zod": "^3.23.8"
   },
   "devDependencies": {
     "@types/react": "^18.2.15",
