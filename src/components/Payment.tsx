@@ -13,7 +13,7 @@ export default function Payment() {
         // stateInit: "base64bocblahblahblah==" // just for instance. Replace with your transaction initState or remove
       },
       {
-        address: "0QCSES0TZYqcVkgoguhIb8iMEo4cvaEwmIrU5qbQgnN8fo2A-Jn",
+        address: "0QCSES0TZYqcVkgoguhIb8iMEo4cvaEwmIrU5qbQgnN8fo2A",
         amount: "30000000",
         payload: "Hello World TON", // just for instance. Replace with your transaction payload or remove
       },
