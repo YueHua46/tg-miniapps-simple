@@ -7,7 +7,7 @@ export const Header = () => {
       style={{ display: "flex", flexDirection: "column", width: "100vw" }}
     >
       <TonConnectButton />
-      <span>My App with React UI</span>
+      <span className="text-white">My App with React UI</span>
     </header>
   );
 };

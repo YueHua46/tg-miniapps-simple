@@ -58,24 +58,11 @@ export default function Payment() {
   };
   return (
     <div className="flex flex-col gap-4">
-      <button
-        className="p-4 bg-[#0098EA] rounded-3xl text-white border-none cursor-pointer"
-        onClick={sendSimpleTransaction}
-      >
-        Send simple transaction
-      </button>
-      <button
-        onClick={sendTransaction}
-        className="p-4 bg-[#0098EA] rounded-3xl text-white border-none cursor-pointer"
-      >
+      <button onClick={sendSimpleTransaction}>Send simple transaction</button>
+      <button onClick={sendTransaction}>
         Send have payload fields transaction
       </button>
-      <button
-        onClick={sendAllTransaction}
-        className="p-4 bg-[#0098EA] rounded-3xl text-white border-none cursor-pointer"
-      >
-        Send all transaction
-      </button>
+      <button onClick={sendAllTransaction}>Send all transaction</button>
     </div>
   );
 }

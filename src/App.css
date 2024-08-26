@@ -5,12 +5,31 @@ body {
   padding: 0;
 }
 
-.primary-button {
-  background-color: #0098ea;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 20px;
+:root {
+  --bg-color: var(--tg-theme-bg-color, #fff);
+  --text-color: var(--tg-theme-text-color, #222);
+  --link: var(--tg-theme-link-color, #2678b6);
+  --link-hover: var(--tg-theme-link-hover-color, #2a6496);
+  --btn-primary: var(--tg-theme-button-color, #50a8eb);
+  --btn-text-color: var(--tg-theme-button-text-color, #fff);
+
+  background-color: var(--bg-color);
+  color: var(--text-color, #222);
+  color-scheme: var(--tg-color-scheme);
+}
+a {
+  color: var(--link);
+  text-decoration: none;
+}
+a:hover {
+  color: var(--link-hover);
+}
+
+button {
   cursor: pointer;
-  font-size: 16px;
+  color: var(--btn-text-color);
+  background-color: var(--btn-primary);
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
 }

@@ -7,8 +7,8 @@ export default function Links() {
     window.open("https://ierc20.com", "_blank");
   };
   return (
-    <div className="flex flex-col">
-      <h2>Links</h2>
+    <div className="flex flex-col mb-4">
+      <h2 className="text-white">Links</h2>
       <div className="flex gap-4">
         {/* 打开外链 webview */}
         <a className="primary-button" href="https://ierc20.com">
