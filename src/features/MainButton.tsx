@@ -12,8 +12,8 @@ export default function MainButton() {
       <h2>Main Button</h2>
       <div className="flex flex-col gap-4">
         <div className="flex gap-2">
-          <label htmlFor="mb-inp">main button text:</label>
-          <input id="mb-inp" type="text" ref={inp} className="flex-1" />
+          <label>main button text:</label>
+          <input type="text" ref={inp} className="flex-1" />
         </div>
         <button
           onClick={() => {
