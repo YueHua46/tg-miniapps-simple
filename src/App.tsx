@@ -9,9 +9,12 @@ import MainButton from "./features/MainButton";
 import { useGlobalStore } from "./stores";
 import WebApp from "@twa-dev/sdk";
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 function App() {
   const globalState = useGlobalStore();
+  const navigate = useNavigate();
+
   useEffect(() => {
     WebApp.MainButton.setParams({
       text: globalState.mainButtonText,
@@ -23,7 +26,7 @@ function App() {
     });
     WebApp.BackButton.isVisible = globalState.backButtonVisible;
     WebApp.BackButton.onClick(() => {
-      globalState.handleBackButton();
+      globalState.handleBackButton(navigate);
     });
   }, []);
   return (

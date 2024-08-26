@@ -1,4 +1,5 @@
 import WebApp from "@twa-dev/sdk";
+import { NavigateFunction } from "react-router-dom";
 import { create } from "zustand";
 
 interface IGlobalStore {
@@ -7,7 +8,7 @@ interface IGlobalStore {
   setMainButtonText: (text: string) => void;
   triggerMainButton: () => void;
   backButtonVisible: boolean;
-  handleBackButton: () => void;
+  handleBackButton: (navigage: NavigateFunction) => void;
   settingsButtonVisible: boolean;
   handleSettingsButton: () => void;
 }
@@ -31,8 +32,9 @@ const useGlobalStore = create<IGlobalStore>((set, get) => ({
     set({ mainButtonVisible: isVisible });
     WebApp.MainButton.isVisible = isVisible;
   },
-  handleBackButton: () => {
+  handleBackButton: (navigage: NavigateFunction) => {
     console.log("WebApp", WebApp);
+    navigage(-1);
     WebApp.showAlert("Back button pressed");
   },
   handleSettingsButton: () => {
