@@ -1,25 +1,22 @@
 import "./App.css";
 import { TonConnectUIProvider } from "@tonconnect/ui-react";
 import { Header } from "./features/Header";
-import Footer from "./features/Footer";
-import Main from "./features/Main";
+import Transaction from "./features/Transaction";
 import "./polyfills";
 import Links from "./features/Links";
+import { Address } from "./components/Address";
+import MainButton from "./features/MainButton";
 
 function App() {
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        width: "100vw",
-      }}
-    >
+    <div className="flex flex-col w-screen p-4 box-border">
       <TonConnectUIProvider manifestUrl="https://github.com/user-attachments/files/16706686/tonconnect-manifest.json">
         <Header />
-        <Main />
+        <Address />
         <Links />
-        <Footer />
+        {/* main button */}
+        <MainButton />
+        <Transaction />
       </TonConnectUIProvider>
     </div>
   );
