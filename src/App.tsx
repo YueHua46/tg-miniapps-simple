@@ -20,6 +20,9 @@ function App() {
       text: globalState.mainButtonText,
       is_visible: globalState.mainButtonVisible,
     });
+    WebApp.MainButton.onClick(() => {
+      globalState.triggerMainButton();
+    });
     WebApp.SettingsButton.isVisible = globalState.settingsButtonVisible;
     WebApp.SettingsButton.onClick(() => {
       globalState.handleSettingsButton();

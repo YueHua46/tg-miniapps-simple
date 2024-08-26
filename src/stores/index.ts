@@ -6,6 +6,7 @@ interface IGlobalStore {
   mainButtonText: string;
   mainButtonVisible: boolean;
   setMainButtonText: (text: string) => void;
+  handleMainButton: () => void;
   triggerMainButton: () => void;
   backButtonVisible: boolean;
   handleBackButton: (navigage: NavigateFunction) => void;
@@ -26,6 +27,9 @@ const useGlobalStore = create<IGlobalStore>((set, get) => ({
   setMainButtonText: (text) => {
     set({ mainButtonText: text });
     WebApp.MainButton.setParams({ text });
+  },
+  handleMainButton: () => {
+    WebApp.close();
   },
   triggerMainButton: () => {
     const isVisible = !get().mainButtonVisible;
