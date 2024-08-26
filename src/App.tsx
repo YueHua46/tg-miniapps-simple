@@ -4,6 +4,7 @@ import { Header } from "./features/Header";
 import Footer from "./features/Footer";
 import Main from "./features/Main";
 import "./polyfills";
+import Links from "./features/Links";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
       <TonConnectUIProvider manifestUrl="https://github.com/user-attachments/files/16706686/tonconnect-manifest.json">
         <Header />
         <Main />
+        <Links />
         <Footer />
       </TonConnectUIProvider>
     </div>

@@ -4,3 +4,13 @@ body {
   margin: 0;
   padding: 0;
 }
+
+.primary-button {
+  background-color: #0098ea;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 16px;
+}
