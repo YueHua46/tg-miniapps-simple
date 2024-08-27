@@ -8,6 +8,8 @@ import WebApp from "@twa-dev/sdk";
 import router from "./routes/index.tsx";
 import { RouterProvider } from "react-router-dom";
 
+import("eruda").then((eruda) => eruda.default.init());
+
 WebApp.ready();
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
