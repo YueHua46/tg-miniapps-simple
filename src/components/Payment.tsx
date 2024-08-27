@@ -58,6 +58,7 @@ export default function Payment() {
   };
   return (
     <div className="flex flex-col gap-4">
+      <h3>TON Transaction</h3>
       <button onClick={sendSimpleTransaction}>Send simple transaction</button>
       <button onClick={sendTransaction}>
         Send have payload fields transaction

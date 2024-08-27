@@ -6,9 +6,10 @@ interface IGlobalStore {
   mainButtonText: string;
   mainButtonVisible: boolean;
   setMainButtonText: (text: string) => void;
-  handleMainButton: () => void;
+  closeMainButton: () => void;
   triggerMainButton: () => void;
   backButtonVisible: boolean;
+  setBackButtonVisible: (visible: boolean) => void;
   handleBackButton: (navigage: NavigateFunction) => void;
   settingsButtonVisible: boolean;
   handleSettingsButton: () => void;
@@ -17,8 +18,7 @@ interface IGlobalStore {
 const initialGlobalState = {
   mainButtonText: "Close Webview",
   mainButtonVisible: true,
-  backButtonVisible: true,
-  backButtonText: "Back",
+  backButtonVisible: false,
   settingsButtonVisible: true,
 };
 
@@ -28,13 +28,17 @@ const useGlobalStore = create<IGlobalStore>((set, get) => ({
     set({ mainButtonText: text });
     WebApp.MainButton.setParams({ text });
   },
-  handleMainButton: () => {
+  closeMainButton: () => {
     WebApp.close();
   },
   triggerMainButton: () => {
     const isVisible = !get().mainButtonVisible;
     set({ mainButtonVisible: isVisible });
     WebApp.MainButton.isVisible = isVisible;
+  },
+  setBackButtonVisible: (visible) => {
+    set({ backButtonVisible: visible });
+    WebApp.BackButton.isVisible = visible;
   },
   handleBackButton: (navigage: NavigateFunction) => {
     console.log("WebApp", WebApp);
