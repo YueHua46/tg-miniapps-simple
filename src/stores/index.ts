@@ -1,3 +1,4 @@
+import { MainButton } from "@telegram-apps/sdk-react";
 import WebApp from "@twa-dev/sdk";
 import { NavigateFunction } from "react-router-dom";
 import { create } from "zustand";
@@ -5,9 +6,10 @@ import { create } from "zustand";
 interface IGlobalStore {
   mainButtonText: string;
   mainButtonVisible: boolean;
+  mainButtonEnabled: boolean;
   setMainButtonText: (text: string) => void;
   closeMainButton: () => void;
-  triggerMainButton: () => void;
+  triggerMainButton: (mb: MainButton) => void;
   backButtonVisible: boolean;
   setBackButtonVisible: (visible: boolean) => void;
   handleBackButton: (navigage: NavigateFunction) => void;
@@ -18,6 +20,7 @@ interface IGlobalStore {
 const initialGlobalState = {
   mainButtonText: "Close Webview",
   mainButtonVisible: true,
+  mainButtonEnabled: true,
   backButtonVisible: false,
   settingsButtonVisible: true,
 };
@@ -31,10 +34,12 @@ const useGlobalStore = create<IGlobalStore>((set, get) => ({
   closeMainButton: () => {
     WebApp.close();
   },
-  triggerMainButton: () => {
+  triggerMainButton: (mb: MainButton) => {
     const isVisible = !get().mainButtonVisible;
     set({ mainButtonVisible: isVisible });
-    WebApp.MainButton.isVisible = isVisible;
+    mb.setParams({
+      isVisible,
+    });
   },
   setBackButtonVisible: (visible) => {
     set({ backButtonVisible: visible });

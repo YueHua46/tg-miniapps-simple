@@ -6,19 +6,11 @@ export const Address = () => {
 
   return (
     rawAddress && (
-      <div>
-        <div
-          style={{
-            width: "100%",
-          }}
-        >
+      <div className="w-full">
+        <div className="w-full">
           User-friendly address: {userFriendlyAddress}
         </div>
-        <div
-          style={{
-            width: "100%",
-          }}
-        >
+        <div className="w-full overflow-x-hidden">
           Raw address: {rawAddress}
         </div>
       </div>

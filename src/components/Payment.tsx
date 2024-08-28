@@ -6,10 +6,12 @@ import {
   useTonConnectUI,
 } from "@tonconnect/ui-react";
 import { boc2hash, string2bocBase64 } from "../utils";
+import { usePopup } from "@telegram-apps/sdk-react";
 
 export default function Payment() {
   const [tonConnectUI] = useTonConnectUI();
   const userFriendlyAddress = useTonAddress();
+  const popup = usePopup();
 
   const tx: SendTransactionRequest = {
     // 有效期为该交易的有效期为从现在开始的 10 分钟（以 Unix 纪元秒为单位）。
@@ -34,7 +36,16 @@ export default function Payment() {
   };
 
   const sendSimpleTransaction = async () => {
-    if (!userFriendlyAddress) return console.error("not connected");
+    if (!userFriendlyAddress)
+      return popup.open({
+        title: "Payment error",
+        message: "Wallet not connected",
+        buttons: [
+          {
+            type: "ok",
+          },
+        ],
+      });
     const receipt = await tonConnectUI.sendTransaction({
       validUntil: tx.validUntil,
       messages: [tx.messages[0]],
@@ -43,7 +54,16 @@ export default function Payment() {
     // boc to
   };
   const sendTransaction = async () => {
-    if (!userFriendlyAddress) return console.error("not connected");
+    if (!userFriendlyAddress)
+      return popup.open({
+        title: "Payment error",
+        message: "Wallet not connected",
+        buttons: [
+          {
+            type: "ok",
+          },
+        ],
+      });
     const receipt = await tonConnectUI.sendTransaction({
       validUntil: tx.validUntil,
       messages: [tx.messages[1]],
@@ -52,7 +72,16 @@ export default function Payment() {
   };
 
   const sendAllTransaction = async () => {
-    if (!userFriendlyAddress) return console.error("not connected");
+    if (!userFriendlyAddress)
+      return popup.open({
+        title: "Payment error",
+        message: "Wallet not connected",
+        buttons: [
+          {
+            type: "ok",
+          },
+        ],
+      });
     const receipt = await tonConnectUI.sendTransaction(tx);
     console.log("all tx receipt", boc2hash(receipt.boc));
   };

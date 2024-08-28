@@ -6,20 +6,10 @@ export const Wallet = () => {
   return (
     wallet && (
       <div>
-        <span
-          style={{
-            width: "100%",
-          }}
-        >
+        <span className="w-full">
           Connected wallet: {wallet.connectItems?.tonProof?.name}
         </span>
-        <span
-          style={{
-            width: "100%",
-          }}
-        >
-          Device: {wallet.device.appName}
-        </span>
+        <span className="w-full">Device: {wallet.device.appName}</span>
       </div>
     )
   );

@@ -1,8 +1,10 @@
 import { useRef } from "react";
 import { useGlobalStore } from "../stores";
+import { useMainButton } from "@telegram-apps/sdk-react";
 
 export default function MainButton() {
   const inp = useRef<HTMLInputElement>(null);
+  const mb = useMainButton();
   const [setMainButtonText, triggerMainBtn] = useGlobalStore((state) => [
     state.setMainButtonText,
     state.triggerMainButton,
@@ -24,7 +26,7 @@ export default function MainButton() {
         >
           Change main button text
         </button>
-        <button onClick={() => triggerMainBtn()}>
+        <button onClick={() => triggerMainBtn(mb)}>
           Trigger main button visible
         </button>
       </div>

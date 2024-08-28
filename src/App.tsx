@@ -1,15 +1,12 @@
 import "./App.css";
 import { TonConnectUIProvider } from "@tonconnect/ui-react";
-import { Header } from "./features/Header";
-import TonTransaction from "./features/Transaction";
 import "./polyfills";
-import Links from "./features/Links";
-import { Address } from "./components/Address";
-import MainButton from "./features/MainButton";
 import { useGlobalStore } from "./stores";
 import WebApp from "@twa-dev/sdk";
 import { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import { SDKProvider } from "@telegram-apps/sdk-react";
+import Root from "./features/Root";
 
 function App() {
   const globalState = useGlobalStore();
@@ -45,16 +42,11 @@ function App() {
     }
   }, [location.pathname]);
   return (
-    <div className="flex flex-col w-screen p-4 box-border">
+    <SDKProvider acceptCustomStyles debug>
       <TonConnectUIProvider manifestUrl="https://github.com/user-attachments/files/16706686/tonconnect-manifest.json">
-        <Header />
-        <Address />
-        <Links />
-        {/* main button */}
-        <MainButton />
-        <TonTransaction />
+        <Root />
       </TonConnectUIProvider>
-    </div>
+    </SDKProvider>
   );
 }
 
