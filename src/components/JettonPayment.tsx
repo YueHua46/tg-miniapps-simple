@@ -47,20 +47,29 @@ export default function JettonPayment() {
       });
       console.log("error", error);
     }
+
+    const customPayload = beginCell()
+      .storeUint(0, 32)
+      .storeStringTail("Custom payload")
+      .endCell();
+
     const forwardPayload = beginCell()
       .storeUint(0, 32) // 0 opcode means we have a comment
       .storeStringTail("Hello, TON!")
       .endCell();
 
+
+
     const body = beginCell()
       .storeUint(EOpcodes.TRANSFER, 32) // opcode for jetton transfer
       .storeUint(0, 64) // query id
       .storeCoins(toNano(5)) // jetton amount, amount * 10^9
-      .storeAddress(Address.parse(Wallet_DST)) // TON 钱包目标地址
-      .storeAddress(Address.parse(Wallet_SRC)) // 额外响应
-      .storeBit(0) // 没有自定义负载
+      .storeAddress(Address.parse(Wallet_DST)) // DST（Destination）目标钱包地址
+      .storeAddress(Address.parse(Wallet_SRC)) // SRC（Source）源钱包地址
+      .storeBit(1)
+      .storeRef(customPayload)
       .storeCoins(toNano(0.1)) // 转发 ton 额度 (if >0, will send notification message)
-      .storeBit(1) // we store forwardPayload as a reference
+      .storeBit(1) // 我们以引用形式存储 forwardPayload
       .storeRef(forwardPayload)
       .endCell();
 
